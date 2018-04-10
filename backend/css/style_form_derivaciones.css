@@ -1,0 +1,138 @@
+
+@media all {
+  html {
+    width: 210mm;
+    height: 297mm;
+		margin:0;
+		box-shadow: 0;
+}
+body{
+  padding-top: 2px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  max-width: 210mm;
+  white-space: nowrap;
+  font-family:'Helvetica','Verdana','Monaco',sans-serif;
+}
+header{
+  padding-left: 30px;
+}
+#title{
+  font-size: 20px;
+  font-weight: bold;
+  padding-left: 50px;
+  padding-top: 15px;
+}
+#subtitle{
+  font-size: 22px;
+  padding-left: 240px;
+  margin-top: -22px;
+
+}
+.banner{
+
+}
+.ipross{
+  width:100px;
+  padding-left:45px;
+}
+.rnlogo{
+  width: 100px;
+  padding-left: 15px;
+
+}
+.formulario{
+  width: 197mm;
+}
+.contenedor{
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.linea{
+  border-left: 15px;
+  border-top: 20px;
+  border-right: 30px;
+  height: 18px;
+  border-bottom-style: dashed;
+	border-bottom-width: 1px;
+  border-bottom-color: #000;
+  position: relative;
+}
+.fila{
+  display: flex;
+  margin-bottom: 6px;
+}
+.firma{
+  display: flow-root;
+}
+.cuadrado{
+  border: 1px solid  #3e6089;
+  width: 20px;
+  height: 20px;
+}
+.cuadrado_fecha{
+  border: 1px solid  #3e6089;
+  width: 40px;
+  height: 20px;
+}
+.divisor{
+  border: 2px solid #3e6089;
+  width: 0;
+  height: 228px;
+  z-index: 0;
+  margin-left: 137px;
+  position: absolute;
+  margin-top: -46px;
+}
+
+fieldset.scheduler-border {
+  width: 197mm;
+  border: 3px solid #3e6089 !important;
+  /*padding: 0 1.4em 3.4em 1.4em !important;*/
+  padding: 0 19px 10px 22px !important
+  /*margin: 0 0 1.5em 0 !important;*/
+}
+legend.scheduler-border {
+  color:#3e6089;
+	font-size: 20px !important;
+	font-weight: bold !important;
+	text-align: left !important;
+  padding: 0 20px;
+	/*width:auto;
+	padding:0 10px;
+  border-bottom:none;*/
+}
+#form{
+  margin-top: 20px;
+}
+#titleform2{
+  font-weight: normal;
+  display: flex;
+}
+#lc{
+  font-size: 12px;
+}
+#footerNota{
+  font-size: 15px;
+  font-weight: bold;
+}
+@page {
+  size: A4;
+  margin: 0 auto;
+	display: block;
+	margin-bottom: 0.5cm;
+}
+}
+@media print {
+    body{
+      display: block;
+      /*page-break-before: always;*/
+    }
+
+}
