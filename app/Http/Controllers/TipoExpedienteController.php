@@ -16,9 +16,9 @@ class TipoExpedienteController extends Controller
      */
     public function index()
     {
-        $tiposexpedientes = TipoExpediente::all();
+        $tiposExpedientes = TipoExpediente::all();
 
-        return view('tiposexpedientes.index', ['tiposexpedientes' => $tiposexpedientes, 'action'=>'index']);
+        return view('tiposexpedientes.index', ['tiposExpedientes' => $tiposExpedientes, 'action'=>'index']);
     }
 
     /**
@@ -39,7 +39,7 @@ class TipoExpedienteController extends Controller
      */
     public function store(TipoExpedienteRequest $tipoExpedienteRequest)
     {
-        $data = tipoExpedienteRequest->all();
+        $data = $tipoExpedienteRequest->all();
         $creada = TipoExpediente::create($data);
         if ($creada)
         {
@@ -68,7 +68,7 @@ class TipoExpedienteController extends Controller
      */
     public function edit(TipoExpediente $tipoExpediente)
     {
-        return view('tiposexpedientes.edit', ['tipoExpediente' => $tipoExpeidente]);
+        return view('tiposexpedientes.edit', ['tipoExpediente' => $tipoExpediente]);
       //  return view('roles.edit', compact('rol'));
     }
 
@@ -89,7 +89,7 @@ class TipoExpedienteController extends Controller
     public function eliminated()
     {
         $tiposExpedientesEliminados = TipoExpediente::onlyTrashed()->get();
-        return view('tiposexpedientes.eliminated', ['tiposExpedientes' => $tiposEspedientesEliminados, 'action' => 'restore']);
+        return view('tiposexpedientes.eliminated', ['tiposExpedientes' => $tiposExpedientesEliminados, 'action' => 'restore']);
     }
 
     public function restore($id)

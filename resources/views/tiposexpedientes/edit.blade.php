@@ -24,7 +24,7 @@
 
         {!! Form::model($tipoExpediente, ['method' => 'PATCH', 'route' => ['tipoexpediente.update', $tipoExpediente]]) !!}
 
-        @include('tiposexpediente._form')
+        @include('tiposexpedientes._form')
 
         {!! Form::close() !!}
 

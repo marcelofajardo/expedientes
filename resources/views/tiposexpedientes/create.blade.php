@@ -24,7 +24,7 @@
 
         {!! Form::open(['route' => 'tipoexpediente.store']) !!}
 
-        @include('tiposexpedients._form')
+        @include('tiposexpedientes._form')
 
         {!! Form::close() !!}
 
