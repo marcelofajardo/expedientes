@@ -48,6 +48,21 @@ Route::group(['prefix' => 'rol'], function () {
 
 });
 
+
+Route::group(['prefix' => 'expediente'], function () {
+
+    Route::get('listado', 'ExpedienteController@index')->name('expediente.index');
+    Route::get('nueva', 'ExpedienteController@create')->name('expediente.create');
+    Route::post('nueva', 'ExpedienteController@store')->name('expediente.store');
+    Route::get('editar/{expediente}', 'ExpedienteController@edit')->name('expediente.edit');
+    Route::get('ver/{expediente}', 'ExpedienteController@show')->name('expediente.show');
+    Route::patch('editar/{expediente}', 'ExpedienteController@update')->name('expediente.update');
+    Route::get('eliminar/{expediente}', 'ExpedienteController@destroy')->name('expediente.delete');
+    Route::get('restaurar', 'ExpedienteController@eliminated')->name('expediente.eliminated');
+    Route::get('restore/{expediente}', 'ExpedienteController@restore')->name('expediente.restore');
+});
+
+
 Route::group(['prefix' => 'tipoexpediente'], function () {
 
     Route::get('listado', 'TipoExpedienteController@index')->name('tipoexpediente.index');
