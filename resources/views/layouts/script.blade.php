@@ -12,9 +12,8 @@
 <script src="{{ asset('dist/js/adminlte.min.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js')}}"></script>
-
 <script src="{{ asset('js/admin.js') }}"></script>
-
+<script src="{{ asset('js/pikaday.js') }}"></script>
 
 <!-- ESTOS 2 JS QUE VIENEN AHORA SON SISTEMAS DE ALERTAS, ACTUALMENTE ESTA ACTIVO EL SEGUNDO
     ME GUSTO MÁS LA FORMA QUE TIENE -->

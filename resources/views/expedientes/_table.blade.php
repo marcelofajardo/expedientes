@@ -18,7 +18,7 @@
     <tbody>
     @foreach($expedientes as $ex)
         <tr>
-            <td> {{ $ex->fecha }} </td>
+            <td> {{ $ex->fecha->format('d/m/Y H:i:s') }} </td>
             <td> {{ $ex->caratula }} </td>
             @if ($ex->tipoexpediente)
             <td> {{ $ex->tipoexpediente->nombre }} </td>

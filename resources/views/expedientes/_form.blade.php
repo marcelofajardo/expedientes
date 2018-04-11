@@ -21,9 +21,12 @@
         {!! Form::submit('Enviar', ['class' => 'btn btn-success']) !!}
     </div>
 </div>
+
 @push('scripts')
+
 <script>
 
+var picker = new Pikaday({ field: document.getElementById('fecha') });
 $( document ).ready(function() {
     var calendario = new Pikaday(
     {

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ExpedienteRequest extends FormRequest
+class LogRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,7 +23,7 @@ class ExpedienteRequest extends FormRequest
      */
     public function rules()
     {
-        $expediente = $this->route('expediente');
+        $log = $this->route('log');
 
         switch ($this->method()) {
             case 'GET':
@@ -32,28 +32,26 @@ class ExpedienteRequest extends FormRequest
             }
             case 'POST': {
                 return [
-                    'caratula'               => 'required',
-                    'usuario'                => 'nullable',
-                    'nombre_usuario'         => 'nullable',
-                    'rol_usuario'            => 'nullable',
-                    'fecha'                  => 'required',
+                    'campo'                  => 'required',
+                    'username'               => 'nullable',
+                    'valor_anterior'         => 'required',
+                    'valor_nuevo'            => 'required',
                     'slug'                   => 'nullable',
                     'user_id'                => 'nullable|exists:users,id',
-                    'tipo_expediente_id'     => 'required|exists:tipoexpediente,id',
+                    'expediente_id'          => 'required|exists:expediente,id',
 
                 ];
             }
             case 'PUT':
             case 'PATCH': {
                 return [
-                  'caratula'               => 'required',
-                  'usuario'                => 'nullable',
-                  'nombre_usuario'         => 'nullable',
-                  'rol_usuario'            => 'nullable',
-                  'fecha'                  => 'required',
+                  'campo'                  => 'required',
+                  'username'               => 'nullable',
+                  'valor_anterior'         => 'required',
+                  'valor_nuevo'            => 'required',
                   'slug'                   => 'nullable',
                   'user_id'                => 'nullable|exists:users,id',
-                  'tipo_expediente_id'     => 'required|exists:tipoexpediente,id',
+                  'expediente_id'          => 'required|exists:expediente,id',
                 ];
             }
             default:

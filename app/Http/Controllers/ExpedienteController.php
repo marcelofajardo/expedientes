@@ -7,6 +7,7 @@ use App\TipoExpediente;
 use App\Http\Requests\ExpedienteRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 
 class ExpedienteController extends Controller
 {
@@ -17,8 +18,7 @@ class ExpedienteController extends Controller
      */
     public function index()
     {
-        $roles = Expediente::all();
-
+        $expedientes = Expediente::all();
         return view('expedientes.index', ['expedientes' => $expedientes, 'action'=>'index']);
     }
 
@@ -29,7 +29,7 @@ class ExpedienteController extends Controller
      */
     public function create()
     {
-        $tipoExpedientes = TipoExpediente::all();
+        $tipoExpedientes = TipoExpediente::all()->pluck('nombre', 'id');
         return view('expedientes.create', ['tipoExpedientes'=> $tipoExpedientes]);
     }
 
@@ -42,12 +42,17 @@ class ExpedienteController extends Controller
     public function store(ExpedienteRequest $expedienteRequest)
     {
         $data = $expedienteRequest->all();
+        $data['user_id'] = Auth::user()->id;
+        $data['nombre_usuario'] = Auth::user()->nombre;
+        $data['usuario'] = Auth::user()->username;
+        $data['rol_usuario'] = Auth::user()->rol->nombre;
+        //dd($data);
         $creada = Expediente::create($data);
         if ($creada)
         {
            // $this->enviar($despachoRequest->archivo);
             Session::flash('message-success', 'Expediente guardado satisfactoriamente.');
-            return redirect()->route('expedientes.index');
+            return redirect()->route('expediente.index');
         }
     }
 
@@ -70,7 +75,7 @@ class ExpedienteController extends Controller
      */
     public function edit(Expediente $expediente)
     {
-        $tipoExpedientes = TipoExpediente::all();
+        $tipoExpedientes = TipoExpediente::all()->pluck('nombre', 'id');
         return view('expedientes.edit', [
           'expediente' => $expediente,
           'tipoExpedientes' => $tipoExpedientes,
@@ -119,4 +124,14 @@ class ExpedienteController extends Controller
         Session::flash('message-danger', 'Expediente eliminado satisfactoriamente.');
         return redirect()->route('expediente.index');
     }
+
+    /*
+    private function enviar($dato)
+    {
+        \Mail::Send('emails.notification',['nombre'=>'Aviso de Carga al Sistema', 'dato'=>$dato],function($message){
+            $message->from('maurotello73@gmail.com', 'Sistema');
+            $message->to('maurotello73@gmail.com')->subject('Sistema - Mails');
+        });
+    }
+    */
 }

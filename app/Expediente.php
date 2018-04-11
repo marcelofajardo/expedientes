@@ -1,7 +1,9 @@
 <?php
 
 namespace App;
-
+use Carbon\Carbon;
+use App\Logs;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -42,11 +44,17 @@ class Expediente extends Model
      *
      * @param $val
      */
-    public function setNombreAttribute($val)
+    public function setCaratulaAttribute($val)
     {
     //	setlocale(LC_TIME, 'es_ES.UTF-8');
-      //  $this->attributes['nombre'] = strtolower(trim($val));
+        $this->attributes['caratula'] = trim($val);
         $this->attributes['slug'] = str_slug($val) . '-'. rand(5,10);
+
+    }
+
+    public function setFechaAttribute($val)
+    {
+      $this->attributes['fecha'] = Carbon::parse($val)->format('Y-m-d H:i:s');
     }
 
     public function user()
@@ -58,6 +66,22 @@ class Expediente extends Model
     {
         return $this->belongsTo('App\TipoExpediente', 'tipo_expediente_id');
     }
+
+    static::updating(function($expediente)
+    {
+
+        foreach ($expediente->getDirty() as $key => $value) {
+            $control = new Logs;
+            $control->user_id = Auth::user()->id;
+            $control->usernam = Auth::user()->username;
+            $control->expediente_id = $expediente->id;
+            $control->campo = $key;
+            $control->valor_anterior = $expediente->getOriginal($key);
+            $control->valor_nuevo = $value;
+            $control->save();
+        }
+
+    });
 
 
 }

@@ -49,6 +49,22 @@ Route::group(['prefix' => 'rol'], function () {
 });
 
 
+Route::group(['prefix' => 'log'], function () {
+
+    Route::get('listado', 'RolController@index')->name('log.index');
+    Route::get('nueva', 'RolController@create')->name('log.create');
+    Route::post('nueva', 'RolController@store')->name('log.store');
+    Route::get('editar/{log}', 'RolController@edit')->name('log.edit');
+    Route::get('ver/{log}', 'RolController@show')->name('log.show');
+    Route::patch('editar/{log}', 'RolController@update')->name('log.update');
+    Route::get('eliminar/{log}', 'RolController@destroy')->name('log.delete');
+    Route::get('restaurar', 'RolController@eliminated')->name('log.eliminated');
+    Route::get('restore/{log}', 'RolController@restore')->name('log.restore');
+
+});
+
+
+
 Route::group(['prefix' => 'expediente'], function () {
 
     Route::get('listado', 'ExpedienteController@index')->name('expediente.index');
