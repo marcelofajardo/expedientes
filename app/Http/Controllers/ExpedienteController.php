@@ -30,7 +30,10 @@ class ExpedienteController extends Controller
     public function create()
     {
         $tipoExpedientes = TipoExpediente::all()->pluck('nombre', 'id');
-        return view('expedientes.create', ['tipoExpedientes'=> $tipoExpedientes]);
+        return view('expedientes.create', [
+          'tipoExpedientes'=> $tipoExpedientes,
+          'clasificacionExpedientes'=> $clasificacionExpedientes
+        ]);
     }
 
     /**
@@ -79,6 +82,7 @@ class ExpedienteController extends Controller
         return view('expedientes.edit', [
           'expediente' => $expediente,
           'tipoExpedientes' => $tipoExpedientes,
+          'clasificacionExpedientes' => $clasificacionExpedientes,
 
         ]);
       //  return view('roles.edit', compact('rol'));

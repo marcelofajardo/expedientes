@@ -10,10 +10,13 @@
         'id' => 'select_tipo_expediente']) !!}
    </div>
 
-    <div class="form-group col-md-6 col-sm-12">
-        {!! Form::label('caratula', 'Carátula') !!}
-        {!! Form::text('caratula', null, ['class' => 'form-control', 'required']) !!}
-    </div>
+   <div class="form-group col-md-6 col-sm-12">
+      {!! Form::label('clasificacion_id', 'Clasificación Expediente') !!}
+       {!! Form::select('clasificacion_id', $clasificacionExpedientes, null, ['placeholder'=>'Seleccione', 'class' => 'form-control',
+       'id' => 'select_clasificacion_expediente']) !!}
+  </div>
+
+
 
 </div>
 <div class="row">

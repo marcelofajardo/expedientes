@@ -1,4 +1,4 @@
-<?php
+clasificacion<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +45,20 @@ Route::group(['prefix' => 'rol'], function () {
     Route::get('eliminar/{rol}', 'RolController@destroy')->name('rol.delete');
     Route::get('restaurar', 'RolController@eliminated')->name('rol.eliminated');
     Route::get('restore/{rol}', 'RolController@restore')->name('rol.restore');
+
+});
+
+Route::group(['prefix' => 'clasificacion'], function () {
+
+    Route::get('listado', 'ClasificacionAnexoController@index')->name('clasificacion.index');
+    Route::get('nueva', 'ClasificacionAnexoController@create')->name('clasificacion.create');
+    Route::post('nueva', 'ClasificacionAnexoController@store')->name('clasificacion.store');
+    Route::get('editar/{clasificacionAnexo}', 'ClasificacionAnexoController@edit')->name('clasificacion.edit');
+    Route::get('ver/{clasificacionAnexo}', 'ClasificacionAnexoController@show')->name('clasificacion.show');
+    Route::patch('editar/{clasificacionAnexo}', 'ClasificacionAnexoController@update')->name('clasificacion.update');
+    Route::get('eliminar/{clasificacionAnexo}', 'ClasificacionAnexoController@destroy')->name('clasificacion.delete');
+    Route::get('restaurar', 'ClasificacionAnexoController@eliminated')->name('clasificacion.eliminated');
+    Route::get('restore/{clasificacionAnexo}', 'ClasificacionAnexoController@restore')->name('clasificacion.restore');
 
 });
 
