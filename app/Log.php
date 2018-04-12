@@ -27,7 +27,15 @@ class Log extends Model
      * @var array
      */
 
-    protected $fillable = ['user_id', 'expediente_id', 'username', 'campo', 'valor_anterior', 'valor_nuevo', 'slug'];
+    protected $fillable = [
+      'user_id',
+      'expediente_id',
+      'username',
+      'campo',
+      'valor_anterior',
+      'valor_nuevo',
+      'slug'
+    ];
 
     /**
      * Get the route key for the model.
@@ -48,7 +56,7 @@ class Log extends Model
     {
     //	setlocale(LC_TIME, 'es_ES.UTF-8');
         $this->attributes['campo'] = trim($val);
-        $this->attributes['slug'] = str_slug($val) . '-'. rand(5,10);
+        $this->attributes['slug'] = str_slug($val) . '-'. rand(5,100);
 
     }
     public function user()

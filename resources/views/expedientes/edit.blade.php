@@ -24,7 +24,7 @@
 
         {!! Form::model($expediente, ['method' => 'PATCH', 'route' => ['expediente.update', $expediente]]) !!}
 
-        @include('expedientes._form')
+        @include('expedientes._form_edit')
 
         {!! Form::close() !!}
 

@@ -2,7 +2,7 @@
 
 namespace App;
 use Carbon\Carbon;
-use App\Logs;
+use App\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -83,14 +83,17 @@ class Expediente extends Model
         {
 
             foreach ($expediente->getDirty() as $key => $value) {
-                $control = new Logs;
+              if ($key != 'slug')
+              {
+                $control = new Log();
                 $control->user_id = Auth::user()->id;
-                $control->usernam = Auth::user()->username;
+                $control->username = Auth::user()->username;
                 $control->expediente_id = $expediente->id;
                 $control->campo = $key;
                 $control->valor_anterior = $expediente->getOriginal($key);
                 $control->valor_nuevo = $value;
                 $control->save();
+              }
             }
         });
     }

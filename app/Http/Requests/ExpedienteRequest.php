@@ -46,12 +46,13 @@ class ExpedienteRequest extends FormRequest
             case 'PUT':
             case 'PATCH': {
                 return [
-                  'caratula'               => 'required',
+                  'caratula'               => 'required|unique:expediente,caratula,' . $expediente->id,
                   'usuario'                => 'nullable',
                   'nombre_usuario'         => 'nullable',
                   'rol_usuario'            => 'nullable',
                   'fecha'                  => 'required',
                   'slug'                   => 'nullable',
+                  'slug'                   => 'nullable|unique:expediente,slug,' . $expediente->id,
                   'user_id'                => 'nullable|exists:users,id',
                   'tipo_expediente_id'     => 'required|exists:tipoexpediente,id',
                 ];

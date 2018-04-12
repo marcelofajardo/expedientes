@@ -30,6 +30,23 @@
 </div>
 
 
+<div id="tabs">
+    <ul>
+      <li><a href="#tabs-1">Listado de Logs</a></li>
+      <li><a href="#tabs-2">Anexos</a></li>
+    </ul>
+    <div id="tabs-1">
+      @if($logs)
+        @include('logs._table_logs_expedientes')
+      @endif
+    </div>
+    <div id="tabs-2">
+      @if($anexos)
+        @include('anexos._table_expedientes')
+      @endif
+    </div>
+</div>
+
 @push('scripts')
 
 <script>

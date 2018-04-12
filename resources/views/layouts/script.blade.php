@@ -53,13 +53,7 @@
   $('#lfm').filemanager('file');
   var picker = new Pikaday({ field: document.getElementById('fecha') });
 
-  $("#select_tipo_expediente").select2({
-      maximumSelectionLength: 1,
-      tags: false,
-      placeholder: "Seleccione",
-      allowClear: false,
-      multiple: false
-  });
+  
 
 $( document ).ready(function() {
   $( function() {

@@ -5,6 +5,7 @@
         <th>Descripción</th>
         <th>Usuario</th>
         <th>Fecha</th>
+        <th style="width: 17%">Opciones</th>
     </tr>
     </thead>
     <tfoot>
@@ -22,7 +23,10 @@
             <td> {{ $anexo->descripcion }} </td>
             <td> {{ $anexo->username }} </td>
             <td> {{ $anexo->created_at }} </td>
-
+            <td>
+              <a href="#" class="btn btn-danger btn-xs pull-rigth" onclick="return confirm('Está seguro que desea eliminar este ítem?')"
+class="btn btn-danger">Eliminar</a>
+            </td>
         </tr>
     @endforeach
     </tbody>

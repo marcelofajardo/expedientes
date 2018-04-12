@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Expediente;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use App\TipoExpediente;
@@ -34,7 +35,6 @@ class ExpedienteController extends Controller
         $tipoExpedientes = TipoExpediente::all()->pluck('nombre', 'id');
         return view('expedientes.create', [
           'tipoExpedientes'=> $tipoExpedientes,
-          'clasificacionExpedientes'=> $clasificacionExpedientes
         ]);
     }
 
@@ -90,12 +90,18 @@ class ExpedienteController extends Controller
      */
     public function edit(Expediente $expediente)
     {
+      $logs = DB::table('logs')
+          ->where('expediente_id', '=', $expediente->id)
+          ->get();
+      $anexos = DB::table('anexo')
+          ->where('expediente_id', '=', $expediente->id)
+          ->get();
         $tipoExpedientes = TipoExpediente::all()->pluck('nombre', 'id');
         return view('expedientes.edit', [
           'expediente' => $expediente,
           'tipoExpedientes' => $tipoExpedientes,
-          'clasificacionExpedientes' => $clasificacionExpedientes,
-
+          'anexos' => $anexos,
+          'logs' =>$logs,
         ]);
       //  return view('roles.edit', compact('rol'));
     }
@@ -109,6 +115,7 @@ class ExpedienteController extends Controller
      */
     public function update(ExpedienteRequest $expedienteRequest, Expediente $expediente)
     {
+      
         $expediente->fill($expedienteRequest->all())->update();
         Session::flash('message-success', 'Expediente actualizado satisfactoriamente.');
         return redirect()->route('expediente.index');

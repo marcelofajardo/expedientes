@@ -36,7 +36,6 @@ class LogRequest extends FormRequest
                     'username'               => 'nullable',
                     'valor_anterior'         => 'required',
                     'valor_nuevo'            => 'required',
-                    'slug'                   => 'nullable',
                     'user_id'                => 'nullable|exists:users,id',
                     'expediente_id'          => 'required|exists:expediente,id',
 
@@ -49,7 +48,6 @@ class LogRequest extends FormRequest
                   'username'               => 'nullable',
                   'valor_anterior'         => 'required',
                   'valor_nuevo'            => 'required',
-                  'slug'                   => 'nullable',
                   'user_id'                => 'nullable|exists:users,id',
                   'expediente_id'          => 'required|exists:expediente,id',
                 ];
