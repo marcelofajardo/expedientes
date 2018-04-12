@@ -23,7 +23,7 @@
 
             <td> {{ $anexo->file }} </td>
             <td> {{ $anexo->descripcion }} </td>
-            <td> {{ $anexo->usuario }} </td>
+            <td> {{ $anexo->username }} </td>
             <td> {{ $anexo->created_at->format('d/m/Y H:i:s') }} </td>
             <td>
                 @if($action == 'index')

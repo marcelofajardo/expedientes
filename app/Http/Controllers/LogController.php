@@ -29,8 +29,8 @@ class LogController extends Controller
      */
     public function create()
     {
-        $logs = Log::all()->pluck('caratula', 'id')->orderby('fecha');
-        return view('logs.create', ['logs'=> $logs]);
+        $expedientes = Expediente::all()->pluck('caratula', 'id');
+        return view('logs.create', ['expedientes'=> $expedientes]);
     }
 
     /**
@@ -73,13 +73,11 @@ class LogController extends Controller
      */
     public function edit(Log $log)
     {
-        $expedientes = expediente::all()->pluck('nombre', 'id')->orderby('fecha');
+        $expedientes = Expediente::all()->pluck('nombre', 'id');
         return view('logs.edit', [
           'log' => $log,
           'expedientes' => $expedientes,
-
         ]);
-      //  return view('roles.edit', compact('rol'));
     }
 
     /**

@@ -2,6 +2,8 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+<script src="{{ asset('bower_components/jquery-ui/jquery-ui.js')}}"></script>
+<script src="{{ asset('bower_components/jquery-ui/ui/tabs.js')}}"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
 <!-- SlimScroll -->
@@ -14,11 +16,7 @@
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <script src="{{ asset('js/admin.js') }}"></script>
 <script src="{{ asset('js/pikaday.js') }}"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script
-  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
-  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
-  crossorigin="anonymous"></script>
+
 <script src="{{ asset('vendor/laravel-filemanager/js/lfm.js') }}"></script>
 
 
@@ -50,9 +48,8 @@
     @endif
 </script>
 
-
-
 <script>
+
   $('#lfm').filemanager('file');
   var picker = new Pikaday({ field: document.getElementById('fecha') });
 
@@ -65,6 +62,10 @@
   });
 
 $( document ).ready(function() {
+  $( function() {
+    $("#tabs").tabs();
+  });
+
     $('#table').DataTable({
         "sDom": '<"top"l>rt<"bottom"ip><"clear">',
         processing: true,
@@ -83,5 +84,28 @@ $( document ).ready(function() {
             })
         }
     });
+    $('#table-anexos-expedientes').DataTable({
+        "sDom": '<"top"l>rt<"bottom"ip><"clear">',
+        processing: true,
+        language: {
+            "url": '{{ asset('js/Spanish.json') }}'
+        },
+        initComplete: function () {
+            this.api().columns().every(function () {
+                var column = this;
+                var input = document.createElement("input");
+                input.setAttribute("class", "col-md-12");
+                $(input).appendTo($(column.footer()).empty())
+                    .on('change', function () {
+                        column.search($(this).val(), false, false, true).draw();
+                    });
+            })
+        }
+    });
+
+
+
+
+
 });
 </script>

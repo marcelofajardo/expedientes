@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
 
   <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css')}}">
-
+    <link rel="stylesheet" href="{{ asset('bower_components/jquery-ui/themes/base/jquery-ui.css')}}">
+  <link rel="stylesheet" href="{{ asset('bower_components/jquery-ui/themes/base/tabs.css')}}">
   <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css')}}">
 
   <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css')}}">
@@ -21,11 +22,11 @@
 
 <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-  
+
   <!-- <link rel="javascript" href="{{ asset('js/admin.js') }}">-->
 
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
   <script src="{{ asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
-  
+
 </head>

@@ -33,11 +33,11 @@
             @endif
             <td> {{ $log->campo }} </td>
             <td> {{ $log->valor_anterior }} </td>
-            <td> {{ $log->nuevo }} </td>
+            <td> {{ $log->valor_nuevo }} </td>
             <td> {{ $log->username }} </td>
             <td>
                 @if($action == 'index')
-                    <a href="{{ route('log.edit', $log) }}" class="btn btn-warning btn-xs">Editar</a>
+                    
                     <a href="{{ route('log.delete', $log)}}" class="btn btn-danger btn-xs pull-rigth" onclick="return confirm('Está seguro que desea eliminar este ítem?')"
     class="btn btn-danger">Eliminar</a>
                 @else
