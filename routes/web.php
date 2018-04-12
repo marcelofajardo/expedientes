@@ -1,4 +1,4 @@
-clasificacion<?php
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -63,20 +63,37 @@ Route::group(['prefix' => 'clasificacion'], function () {
 });
 
 
+
+
+
 Route::group(['prefix' => 'log'], function () {
 
-    Route::get('listado', 'RolController@index')->name('log.index');
-    Route::get('nueva', 'RolController@create')->name('log.create');
-    Route::post('nueva', 'RolController@store')->name('log.store');
-    Route::get('editar/{log}', 'RolController@edit')->name('log.edit');
-    Route::get('ver/{log}', 'RolController@show')->name('log.show');
-    Route::patch('editar/{log}', 'RolController@update')->name('log.update');
-    Route::get('eliminar/{log}', 'RolController@destroy')->name('log.delete');
-    Route::get('restaurar', 'RolController@eliminated')->name('log.eliminated');
-    Route::get('restore/{log}', 'RolController@restore')->name('log.restore');
+    Route::get('listado', 'LogController@index')->name('log.index');
+    Route::get('nueva', 'LogController@create')->name('log.create');
+    Route::post('nueva', 'LogController@store')->name('log.store');
+    Route::get('editar/{log}', 'LogController@edit')->name('log.edit');
+    Route::get('ver/{log}', 'LogController@show')->name('log.show');
+    Route::patch('editar/{log}', 'LogController@update')->name('log.update');
+    Route::get('eliminar/{log}', 'LogController@destroy')->name('log.delete');
+    Route::get('restaurar', 'LogController@eliminated')->name('log.eliminated');
+    Route::get('restore/{log}', 'LogController@restore')->name('log.restore');
 
 });
 
+
+Route::group(['prefix' => 'anexo'], function () {
+
+    Route::get('listado', 'AnexoController@index')->name('anexo.index');
+    Route::get('nueva', 'AnexoController@create')->name('anexo.create');
+    Route::post('nueva', 'AnexoController@store')->name('anexo.store');
+    Route::get('editar/{anexo}', 'AnexoController@edit')->name('anexo.edit');
+    Route::get('ver/{anexo}', 'AnexoController@show')->name('anexo.show');
+    Route::patch('editar/{anexo}', 'AnexoController@update')->name('anexo.update');
+    Route::get('eliminar/{anexo}', 'AnexoController@destroy')->name('anexo.delete');
+    Route::get('restaurar', 'AnexoController@eliminated')->name('anexo.eliminated');
+    Route::get('restore/{anexo}', 'AnexoController@restore')->name('anexo.restore');
+
+});
 
 
 Route::group(['prefix' => 'expediente'], function () {

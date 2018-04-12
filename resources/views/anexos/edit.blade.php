@@ -8,12 +8,12 @@
 
     <div class="page-title">
         <div class="title_left">
-            <h3>Nuevo Expediente <small> ingresar un nuevo Expediente al Sistema.</small>
+            <h3>Editar Anexo <small> modificar el ítem seleccionado.</small>
             </h3>
             <br/>
         </div>
         <div class="pull-right">
-            <a href="{{ route('expediente.index') }}" class="btn btn-default"> Volver</a>
+            <a href="{{ route('anexo.index') }}" class="btn btn-default"> Volver</a>
             <br/>
         </div>
     </div>
@@ -22,19 +22,12 @@
     <div class="divider"></div>
     <div>
 
-        {!! Form::open(['route' => 'expediente.store']) !!}
+        {!! Form::model($anexo, ['method' => 'PATCH', 'route' => ['anexo.update', $anexo], 'enctype' => 'multipart/form-data']) !!}
 
-
-        @include('expedientes._form')
+        @include('anexos._form')
 
         {!! Form::close() !!}
 
     </div>
 
 @endsection
-
-@push('scripts')
-
-<script src="{{ asset('public/js/admin.js') }}"></script>
-
-@endpush

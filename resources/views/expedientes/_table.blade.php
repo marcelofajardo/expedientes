@@ -27,6 +27,7 @@
             @endif
             <td>
                 @if($action == 'index')
+                    <a href="{{ route('expediente.show', $ex) }}" class="btn btn-primary btn-xs pull-rigth">Visualizar</a>
                     <a href="{{ route('expediente.edit', $ex) }}" class="btn btn-warning btn-xs">Editar</a>
                     <a href="{{ route('expediente.delete', $ex)}}" class="btn btn-danger btn-xs pull-rigth" onclick="return confirm('Está seguro que desea eliminar este ítem?')"
     class="btn btn-danger">Eliminar</a>

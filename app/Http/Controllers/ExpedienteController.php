@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Expediente;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use App\TipoExpediente;
 use App\Http\Requests\ExpedienteRequest;
 use Illuminate\Http\Request;
@@ -67,7 +69,17 @@ class ExpedienteController extends Controller
      */
     public function show(Expediente $expediente)
     {
-        return view('expedientes.show', compact('expediente'));
+      $logs = DB::table('logs')
+          ->where('expediente_id', '=', $expediente->id)
+          ->get();
+      $anexos = DB::table('anexo')
+          ->where('expediente_id', '=', $expediente->id)
+          ->get();
+        return view('expedientes.show', [
+          'logs'=>$logs,
+          'anexos'=>$anexos,
+          'expediente'=>$expediente,
+        ]);
     }
 
     /**

@@ -27,7 +27,16 @@ class Expediente extends Model
      * @var array
      */
 
-    protected $fillable = ['fecha', 'caratula', 'usuario', 'nombre_usuario', 'rol_usuario', 'slug', 'user_id', 'tipo_expediente_id'];
+    protected $fillable = [
+      'fecha',
+      'caratula',
+      'usuario',
+      'nombre_usuario',
+      'rol_usuario',
+      'slug',
+      'user_id',
+      'tipo_expediente_id'
+    ];
 
     /**
      * Get the route key for the model.
@@ -67,21 +76,22 @@ class Expediente extends Model
         return $this->belongsTo('App\TipoExpediente', 'tipo_expediente_id');
     }
 
-    static::updating(function($expediente)
-    {
 
-        foreach ($expediente->getDirty() as $key => $value) {
-            $control = new Logs;
-            $control->user_id = Auth::user()->id;
-            $control->usernam = Auth::user()->username;
-            $control->expediente_id = $expediente->id;
-            $control->campo = $key;
-            $control->valor_anterior = $expediente->getOriginal($key);
-            $control->valor_nuevo = $value;
-            $control->save();
-        }
+    public static function boot(){
+        parent::boot();
+        static::updating(function($expediente)
+        {
 
-    });
-
-
+            foreach ($expediente->getDirty() as $key => $value) {
+                $control = new Logs;
+                $control->user_id = Auth::user()->id;
+                $control->usernam = Auth::user()->username;
+                $control->expediente_id = $expediente->id;
+                $control->campo = $key;
+                $control->valor_anterior = $expediente->getOriginal($key);
+                $control->valor_nuevo = $value;
+                $control->save();
+            }
+        });
+    }
 }

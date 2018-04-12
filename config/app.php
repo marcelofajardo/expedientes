@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'timezone' => 'America/Bogota',
+    'timezone' => 'America/Argentina/Buenos_Aires',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,6 +172,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        
 
         /*
          * Application Service Providers...

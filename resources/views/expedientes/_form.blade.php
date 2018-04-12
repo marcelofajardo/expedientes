@@ -4,6 +4,11 @@
         {!! Form::text('fecha', null, ['class' => 'form-control', 'required']) !!}
     </div>
 
+    <div class="form-group col-md-2 col-sm-12">
+        {!! Form::label('caratula', 'Caratula') !!}
+        {!! Form::text('caratula', null, ['class' => 'form-control', 'required']) !!}
+    </div>
+
     <div class="form-group col-md-6 col-sm-12">
        {!! Form::label('tipo_expediente_id', 'Tipo de Expediente') !!}
         {!! Form::select('tipo_expediente_id', $tipoExpedientes, null, ['placeholder'=>'Seleccione', 'class' => 'form-control',

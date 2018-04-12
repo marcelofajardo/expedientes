@@ -27,7 +27,16 @@ class Anexo extends Model
      * @var array
      */
 
-    protected $fillable = ['expediente_id', 'clasificacion_id', 'username', 'descripcion', 'slug', 'user_id'];
+    protected $fillable = [
+      'expediente_id',
+      'clasificacion_id',
+      'username',
+      'descripcion',
+      'slug',
+      'user_id',
+      'url',
+      'file',
+    ];
 
     /**
      * Get the route key for the model.
@@ -44,21 +53,26 @@ class Anexo extends Model
      *
      * @param $val
      */
-     /*
-    public function setCaratulaAttribute($val)
+
+    public function setFileAttribute($val)
     {
     //	setlocale(LC_TIME, 'es_ES.UTF-8');
-        $this->attributes['caratula'] = trim($val);
+        $this->attributes['file'] = trim($val);
         $this->attributes['slug'] = str_slug($val) . '-'. rand(5,10);
 
     }
-*/
+
 
     public function user()
     {
         return $this->belongsTo('App\User');
 
     }
+    public function expediente()
+    {
+        return $this->belongsTo('App\Expediente', 'expediente_id');
+    }
+
     public function clasificacion()
     {
         return $this->belongsTo('App\ClasificacionAnexo', 'clasificacion_id');

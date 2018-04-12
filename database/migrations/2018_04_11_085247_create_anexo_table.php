@@ -19,6 +19,7 @@ class CreateAnexoTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('clasificacion_id')->unsigned();
             $table->string('username');
+            $table->string('file');
             $table->string('descripcion');
             $table->string('url');
             $table->timestamps();

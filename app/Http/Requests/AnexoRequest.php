@@ -34,7 +34,7 @@ class AnexoRequest extends FormRequest
                 return [
                     'descripcion'        => 'nullable',
                     'user_id'            => 'nullable|exists:users,id',
-                    'clasificacion_id'   => 'nullable|exists:clasificacion,id',
+                    'clasificacion_id'   => 'nullable|exists:clasificacion_anexo,id',
                     'expediente_id'      => 'required|exists:expediente,id',
                     'username'            => 'nullable',
                     'url'                => 'nullable',
@@ -45,7 +45,7 @@ class AnexoRequest extends FormRequest
                 return [
                   'descripcion'        => 'nullable',
                   'user_id'            => 'nullable|exists:users,id',
-                  'clasificacion_id'   => 'nullable|exists:clasificacion,id',
+                  'clasificacion_id'   => 'nullable|exists:clasificacion_anexo,id',
                   'expediente_id'      => 'required|exists:expediente,id',
                   'username'            => 'nullable',
                   'url'                => 'nullable',

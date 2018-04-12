@@ -15,7 +15,7 @@ class CreateClasificacionAnexoTable extends Migration
     {
         Schema::create('clasificacion_anexo', function (Blueprint $table) {
           $table->increments('id');
-          $table->increments('nombre');
+          $table->string('nombre');
           $table->timestamps();
         });
     }

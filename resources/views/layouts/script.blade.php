@@ -14,6 +14,13 @@
 <script src="{{ asset('dist/js/demo.js')}}"></script>
 <script src="{{ asset('js/admin.js') }}"></script>
 <script src="{{ asset('js/pikaday.js') }}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"
+  integrity="sha256-0YPKAwZP7Mp3ALMRVB2i8GXeEndvCq3eSl/WsAl1Ryk="
+  crossorigin="anonymous"></script>
+<script src="{{ asset('vendor/laravel-filemanager/js/lfm.js') }}"></script>
+
 
 <!-- ESTOS 2 JS QUE VIENEN AHORA SON SISTEMAS DE ALERTAS, ACTUALMENTE ESTA ACTIVO EL SEGUNDO
     ME GUSTO MÁS LA FORMA QUE TIENE -->
@@ -46,6 +53,17 @@
 
 
 <script>
+  $('#lfm').filemanager('file');
+  var picker = new Pikaday({ field: document.getElementById('fecha') });
+
+  $("#select_tipo_expediente").select2({
+      maximumSelectionLength: 1,
+      tags: false,
+      placeholder: "Seleccione",
+      allowClear: false,
+      multiple: false
+  });
+
 $( document ).ready(function() {
     $('#table').DataTable({
         "sDom": '<"top"l>rt<"bottom"ip><"clear">',
